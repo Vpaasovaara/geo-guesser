@@ -473,10 +473,6 @@ Ensure the default browser behavior of the `hidden` attribute.
   margin-bottom: 0.5rem;
 }
 
-.mt-6 {
-  margin-top: 1.5rem;
-}
-
 .mt-4 {
   margin-top: 1rem;
 }
@@ -616,8 +612,6 @@ body {
 
 .contentMain {
   display: flex;
-  height: 66.666667%;
-  width: 66.666667%;
   flex-direction: column;
   border-radius: 0.25rem;
   --tw-bg-opacity: 1;
@@ -696,6 +690,14 @@ body {
 }
 
 @media screen and (max-width: 800px) {
+  .contentMain {
+    height: 83.333333%;
+  }
+
+  .contentMain {
+    width: 91.666667%;
+  }
+
   .upperMain {
     flex-direction: column;
   }
@@ -762,5 +764,13 @@ body {
   .answerBox {
     font-size: 1.125rem;
     line-height: 1.75rem;
+  }
+
+  .contentMain {
+    height: 66.666667%;
+  }
+
+  .contentMain {
+    width: 66.666667%;
   }
 }
