@@ -1,0 +1,89 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+    @apply bg-indigo-200 dark:bg-indigo-900;
+}
+
+.themeButton {
+    @apply text-black dark:text-white p-3 bg-white dark:bg-black rounded border-solid border-2 border-black dark:border-white;
+}
+
+.centerall {
+    @apply items-center justify-center flex align-middle w-screen h-screen;
+}
+
+.contentMain {
+    @apply bg-violet-400 dark:bg-violet-900 w-4/6 h-4/6 flex flex-col rounded;
+}
+
+.upperMain {
+    @apply h-4/6 m-2 flex bg-indigo-800 rounded;
+}
+
+.lowerMain {
+    @apply h-2/6 mx-2 mb-2 grid;
+}
+
+.flagWindow {
+    @apply bg-indigo-800 flex items-center justify-center overflow-hidden;
+}
+
+.questionText {
+    @apply flex flex-col text-center justify-center items-center text-white;
+}
+
+.answerBox {
+    @apply flex items-center justify-center text-white bg-indigo-800 m-2 rounded border-solid border-2 border-white;
+}
+
+.Image {
+    @apply w-3/4 object-cover block m-auto;
+}
+
+.pisteLista {
+    @apply list-decimal ml-6 mt-2;
+}
+
+@media screen and (max-width: 800px) {
+    .upperMain {
+        @apply flex-col;
+    }
+    .lowerMain {
+        @apply grid-rows-4;
+    }
+    .flagWindow {
+        @apply h-4/6;
+    }
+    .questionText {
+        @apply text-lg mx-2;
+    }
+    .flagText {
+        @apply hidden;
+    }
+    .answerBox {
+        @apply text-sm;
+    }
+}
+
+@media screen and (min-width: 800px) {
+    .upperMain {
+        @apply flex-row;
+    }
+    .lowerMain {
+        @apply grid-cols-2 grid-rows-2;
+    }
+    .flagWindow {
+        @apply w-4/6;
+    }
+    .questionText {
+        @apply mx-6 text-xl;
+    }
+    .InfoItemMargin {
+        @apply mt-6;
+    }
+    .answerBox {
+        @apply text-lg;
+    }
+}
