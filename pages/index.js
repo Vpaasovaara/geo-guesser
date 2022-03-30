@@ -88,30 +88,6 @@ const Home = () => {
     setAnswers(answerList)
   }
 
-  const changeTheme = () => {
-    if (localStorage.getItem('theme')) {
-        if (localStorage.getItem('theme') === 'light') {
-            document.documentElement.classList.add('dark');
-            localStorage.setItem('theme', 'dark');
-            setTheme('dark')
-        } else {
-            document.documentElement.classList.remove('dark');
-            localStorage.setItem('theme', 'light');
-            setTheme('light')
-        }
-    } else {
-        if (document.documentElement.classList.contains('dark')) {
-            document.documentElement.classList.remove('dark');
-            localStorage.setItem('theme', 'light');
-            setTheme('light')
-        } else {
-            document.documentElement.classList.add('dark');
-            localStorage.setItem('theme', 'dark');
-            setTheme('dark')
-        }
-    }
-  }
-
   const startGame = () => {
     setSeconds(20)
     setScore(0)
