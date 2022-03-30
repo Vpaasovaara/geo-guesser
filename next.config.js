@@ -6,7 +6,7 @@ const nextConfig = {
     mongooseURL: "mongodb+srv://codecamp:saniainen987@cluster0.qixnm.mongodb.net/score-App?retryWrites=true&w=majority"
   },
   images: {
-    domains: ['https://restcountries.com', 'localhost', 'flagcdn.com']
+    domains: ['https://restcountries.com', 'localhost', 'flagcdn.com', 'upload.wikimedia.org']
   }
 }
 

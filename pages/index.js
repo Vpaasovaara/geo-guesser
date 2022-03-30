@@ -21,7 +21,6 @@ const Home = () => {
       let myInterval = setInterval(() => {
         if (seconds > 0) {
             setSeconds(seconds - 1);
-            console.log(seconds)
         }
         // If timer goes to 0 game is over
         if (seconds === 0) {
@@ -45,7 +44,6 @@ const Home = () => {
     })
     console.log("GET countries")
   }, [])
-
 
   // Function is called when game ends and resets the game to it's original state
   const gameReset = () => {
@@ -79,6 +77,7 @@ const Home = () => {
     setAnswers(answerList)
   }
 
+  // Initialize game
   const startGame = () => {
     setSeconds(20)
     setScore(0)
@@ -92,19 +91,28 @@ const Home = () => {
   }
 
   const selectAnswer = (selectedAnswer) => {
-    console.log(selectedAnswer, country.translations.fin.common)
+    // Check if the answer is correct
     if (selectedAnswer === country.translations.fin.common) {
-      setSeconds(20)
-      let index = remainingCountries.map(x => x.translations.fin.common).indexOf(country.translations.fin.common)
-      if (index >= 0) {
-        let copy = [...remainingCountries]
-        copy.splice(index, 1)
-        setRemainingCountries(copy)
-        let fullCountry = remainingCountries[Math.floor(Math.random() * remainingCountries.length)]
-        setCountry(fullCountry)
-        let countriesCopy = remainingCountries.map(x => x.translations.fin.common)
-        randomizeAnswers(countriesCopy, fullCountry.translations.fin.common)
+
+      // If all countries have been answered game ends with score 250
+      if (score + 1 === countries.length) {
         setScore(score + 1)
+        gameReset()
+      } else {
+        setSeconds(20)
+
+        // Find random country from remaining countries and get it's index
+        let index = remainingCountries.map(x => x.translations.fin.common).indexOf(country.translations.fin.common)
+        if (index >= 0) {
+          let copy = [...remainingCountries]
+          copy.splice(index, 1)
+          setRemainingCountries(copy)
+          let fullCountry = copy[Math.floor(Math.random() * copy.length)]
+          setCountry(fullCountry)
+          let countriesCopy = fullCountries.map(x => x.translations.fin.common)
+          randomizeAnswers(countriesCopy, fullCountry.translations.fin.common)
+          setScore(score + 1)
+        }
       }
     } else {
       gameReset()
@@ -116,7 +124,7 @@ const Home = () => {
       <div className='contentMain'>
         <div className='upperMain'>
           <FlagWindow country={country} gameOver={gameOver} score={score} gameOn={gameOn} setGameOver={setGameOver}/>
-          {fullCountries && <InfoWindow startGame={startGame} score={score} gameOn={gameOn} seconds={seconds}/>}
+          {fullCountries && <InfoWindow startGame={startGame} score={score} gameOn={gameOn} seconds={seconds} countries={countries}/>}
         </div>
           {answers && <Answers answers={answers} selectAnswer={selectAnswer}/>}
       </div>
