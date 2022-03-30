@@ -5,7 +5,6 @@ import Answers from './components/Answers'
 import InfoWindow from './components/InfoWindow'
 
 const Home = () => {
-  const [ theme, setTheme ] = useState('light')
   const [ countries, setCountries ] = useState([''])
   const [ fullCountries, setFullCountries ] = useState()
   const [ remainingCountries, setRemainingCountries ] = useState()
@@ -16,6 +15,7 @@ const Home = () => {
   const [ score, setScore ] = useState(0)
   const [ seconds, setSeconds ] =  useState(0);
 
+  // Timer for questions
   React.useEffect(()=>{
     if (gameOn) {
       let myInterval = setInterval(() => {
@@ -23,19 +23,20 @@ const Home = () => {
             setSeconds(seconds - 1);
             console.log(seconds)
         }
+        // If timer goes to 0 game is over
         if (seconds === 0) {
             clearInterval(myInterval)
             gameReset()
         } 
       }, 1000)
+      // useEffect clean up
       return ()=> {
         clearInterval(myInterval);
       };
     }
   });
 
-
-
+  // useEffect hook to get countries at first load
   React.useEffect(() => {
     axios.get('https://restcountries.com/v3.1/all').then((res) => {
       setFullCountries(res.data)
@@ -45,22 +46,8 @@ const Home = () => {
     console.log("GET countries")
   }, [])
 
-  React.useEffect(() => {
-    if (
-      localStorage.getItem('theme') === 'dark' ||
-      (!('theme' in localStorage) &&
-        window.matchMedia('(prefers-color-scheme: dark)').matches)
-    ) {
-      document.documentElement.classList.add('dark');
-      setTheme('dark')
-    } else {
-      document.documentElement.classList.remove('dark');
-      setTheme('light')
-    }
 
-
-  }, [])
-
+  // Function is called when game ends and resets the game to it's original state
   const gameReset = () => {
     setGameOn(false)
     setGameOver(true)
@@ -69,15 +56,19 @@ const Home = () => {
     setAnswers([])
   }
 
+  // 3 random answers are selected from all countries and put in a list with the right answer
   const randomizeAnswers = (listOfCountries, selectedCountry) => {
     let answerList = []
     let i = 0
     do {
       let randomCountry = listOfCountries[Math.floor(Math.random() * listOfCountries.length)]
-      //console.log(randomCountry, selectedCountry)
       if (answerList.includes(randomCountry)) {
         continue
       } else if (selectedCountry === randomCountry) {
+        continue
+      } else if (selectedCountry === 'Huippuvuoret' && randomCountry === 'Norja' || selectedCountry === 'Norja' && randomCountry === 'Huippuvuoret') {
+        continue
+      } else if (selectedCountry === 'Yhdysvallat' && randomCountry === 'Yhdysvaltojen asumattomat saaret' || selectedCountry === 'Yhdysvaltojen asumattomat saaret' && randomCountry === 'Yhdysvallat') {
         continue
       } else {
         answerList.push(randomCountry)

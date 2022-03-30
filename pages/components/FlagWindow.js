@@ -44,7 +44,7 @@ const FlagWindow = ({ country, gameOver, setGameOver, score, gameOn }) => {
             }
             {!gameOn && !gameOver &&
                 <div className="text-white flex flex-col">
-                    <h1 className="text-2xl">Top 10</h1>
+                    <h1 className="text-2xl -mt-2">Top 10</h1>
                     {playerScores &&
                     <ol className="pisteLista"> 
                     {playerScores.map((score, i) => {

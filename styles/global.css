@@ -481,6 +481,10 @@ Ensure the default browser behavior of the `hidden` attribute.
   margin-left: 1rem;
 }
 
+.-mt-2 {
+  margin-top: -0.5rem;
+}
+
 .block {
   display: block;
 }
@@ -544,6 +548,11 @@ Ensure the default browser behavior of the `hidden` attribute.
   line-height: 1.75rem;
 }
 
+.text-xl {
+  font-size: 1.25rem;
+  line-height: 1.75rem;
+}
+
 .text-white {
   --tw-text-opacity: 1;
   color: rgb(255 255 255 / var(--tw-text-opacity));
@@ -567,6 +576,16 @@ Ensure the default browser behavior of the `hidden` attribute.
 .text-yellow-700 {
   --tw-text-opacity: 1;
   color: rgb(161 98 7 / var(--tw-text-opacity));
+}
+
+.text-yellow-300 {
+  --tw-text-opacity: 1;
+  color: rgb(253 224 71 / var(--tw-text-opacity));
+}
+
+.text-red-600 {
+  --tw-text-opacity: 1;
+  color: rgb(220 38 38 / var(--tw-text-opacity));
 }
 
 body {
@@ -638,7 +657,6 @@ body {
 .questionText {
   display: flex;
   flex-direction: column;
-  align-items: center;
   justify-content: center;
   text-align: center;
   --tw-text-opacity: 1;
@@ -693,7 +711,7 @@ body {
   }
 
   .flagWindow {
-    height: 66.666667%;
+    height: 83.333333%;
   }
 
   .questionText {
@@ -713,6 +731,18 @@ body {
   .answerBox {
     font-size: 0.875rem;
     line-height: 1.25rem;
+  }
+
+  .questionText {
+    margin-top: -1.5rem;
+  }
+
+  .questionText {
+    height: 16.666667%;
+  }
+
+  .pisteLista {
+    margin-top: 0px;
   }
 }
 

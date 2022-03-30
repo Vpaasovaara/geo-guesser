@@ -31,7 +31,7 @@ body {
 }
 
 .questionText {
-    @apply flex flex-col text-center justify-center items-center text-white;
+    @apply flex flex-col text-center justify-center text-white;
 }
 
 .answerBox {
@@ -57,7 +57,7 @@ body {
         @apply grid-rows-4;
     }
     .flagWindow {
-        @apply h-4/6;
+        @apply h-5/6;
     }
     .questionText {
         @apply text-lg mx-2;
@@ -67,6 +67,12 @@ body {
     }
     .answerBox {
         @apply text-sm;
+    }
+    .questionText {
+        @apply h-1/6 -mt-6;
+    }
+    .pisteLista {
+        @apply mt-0
     }
 }
 

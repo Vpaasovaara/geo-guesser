@@ -3,8 +3,6 @@ import Score from '../../../models/scores'
 
 // GET /api/scores
 const handler = async(req, res) => {
-
-
     try {
         // Get scores from mongoDB
         let scoreList = await Score.find({})
@@ -15,6 +13,7 @@ const handler = async(req, res) => {
         // send sorted list
         res.send(copy)
     } catch (error) {
+        res.status(500).send(error)
         console.log(error)
     }
     
